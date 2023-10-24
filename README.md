@@ -1,8 +1,8 @@
 # Barcode Scanner
 
-|   Nom   | Prénom |
-|---------|--------|
-|   Doe   |  Jane  |
+| Nom     | Prénom      |
+|---------|-------------|
+| ABAAKIL | Abderrahman |
 
 Le TP est à réaliser individuellement.
 
