@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CheckoutScreen from './CheckoutScreen';
 import LandingPage from './LandingPage';
 import Historique from './HistoriqueScreen';
+import Panier from './PanierScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="LandingPage" component={LandingPage} />
           <Stack.Screen name="Checkout" component={CheckoutScreen} />
           <Stack.Screen name="Historique" component={Historique} />
+          <Stack.Screen name="Panier" component={Panier} />
         </Stack.Navigator>
       </NavigationContainer>
     </StripeProvider>
