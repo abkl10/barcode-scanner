@@ -25,6 +25,31 @@ const initDatabase = () => {
       }
     );
   });
+  /*
+  tx.executeSql(
+        "DROP TABLE IF EXISTS Panier",
+        [],
+        () => {
+          console.log('Table "Panier" dropped successfully.');
+        },
+        (error) => {
+          console.error('Error dropping the "Panier" table:', error);
+        }
+      );
+      tx.executeSql(
+        "DROP TABLE IF EXISTS Achats",
+        [],
+        () => {
+          console.log('Table "Achats" dropped successfully.');
+        },
+        (error) => {
+          console.error('Error dropping the "Achats" table:', error);
+        }
+      );
+      // Commit the transaction
+      tx.executeSql("COMMIT;");
+    });
+  */
 };
 
 export { db, initDatabase };
