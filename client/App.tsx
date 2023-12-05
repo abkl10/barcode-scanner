@@ -7,6 +7,7 @@ import CheckoutScreen from './Views/CheckoutScreen';
 import LandingPage from './Views/LandingPage';
 import Historique from './Views/HistoriqueScreen';
 import Panier from './Views/PanierScreen';
+import Scan from './Views/ScanScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,8 @@ export default function App() {
           <Stack.Screen name="Checkout" component={CheckoutScreen} />
           <Stack.Screen name="Historique" component={Historique} />
           <Stack.Screen name="Panier" component={Panier} />
+          <Stack.Screen name="Scan" component={Scan} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </StripeProvider>

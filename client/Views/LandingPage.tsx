@@ -18,6 +18,12 @@ export default function LandingPage({ navigation }) {
         />
       </View>
       <View style={styles.buttonContainer}>
+            <Button
+              title="Scan"
+              onPress={() => navigation.navigate("Scan")}
+              />
+      </View>
+      <View style={styles.buttonContainer}>
         <Button
           title="Checkout"
           onPress={() => navigation.navigate("Checkout")}
