@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
+import * as SQLITE from "expo-sqlite";
+import { initDatabase } from "../db";
+
+const db = SQLITE.openDatabase("bareCode.db");
 
 export default function LandingPage({ navigation }) {
+useEffect(() => {
+    initDatabase();
+  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the Landing Page</Text>
