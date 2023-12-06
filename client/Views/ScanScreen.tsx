@@ -1,12 +1,18 @@
 import { Camera } from "expo-camera";
 import React, { useEffect, useState } from "react";
-import { Alert, Text, Button, SafeAreaView, View, TextInput } from "react-native";
+import { Alert, Text, Button, View, TextInput, TouchableOpacity } from "react-native";
 import { db } from "../db";
+import { Fontisto } from '@expo/vector-icons';
 
-export default function Scan() {
+export default function Scan({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [text, setText] = useState("Not yet scanned");
+  const [text, setText] = useState("Enter Article Number");
+  const [inputField, setInputField] = useState("");
+
+  const navigateToScreen = (screenName) => {
+    navigation.navigate(screenName);
+  };
 
   const askCameraPermission = () => {
     (async () => {
@@ -59,7 +65,7 @@ export default function Scan() {
 
   const addItem = async (itemId) => {
     try {
-      const response = await fetch(`http://192.168.23.216:8080/items/${itemId}`);
+      const response = await fetch(`http://192.168.23.122:8080/items/${itemId}`);
       console.log("API Response Status:", response.status);
 
       if (response.status === 200) {
@@ -125,10 +131,23 @@ export default function Scan() {
         />
       </View>
     );
-  }
+origin/main  }
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity
+             style={styles.panierButton}
+             onPress={() => navigateToScreen("Panier")}
+           >
+             <Fontisto name="shopping-basket" size={24} color="black" />
+           </TouchableOpacity>
+            <TouchableOpacity
+                        style={styles.homeButton}
+                        onPress={() => navigateToScreen("LandingPage")}
+                      >
+                        <Fontisto name="home" size={24} color="black" />
+                      </TouchableOpacity>
+
       <View style={styles.box}>
         <Camera
           onBarCodeScanned={scanned ? undefined : handleBarCode}
@@ -138,26 +157,31 @@ export default function Scan() {
       <Text style={styles.text}>{text}</Text>
 
       {scanned && (
-        <Button
-          title={"Ajouter au Panier"}
+        <TouchableOpacity
+          style={styles.addToCartButton}
           onPress={() => {
-            addItem(1);
+            addItem(parseInt(inputField));
           }}
-          color="tomato"
-        />
+        >
+          <Text style={styles.addToCartButtonText}>Ajouter au Panier</Text>
+        </TouchableOpacity>
       )}
-      <TextInput
-        style={styles.articleNumber}
-        placeholder="Article number"
-        keyboardType="numeric"
-        value="1"
-      />
-      <Button
-        title="Add to cart"
+       <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.articleNumber}
+                placeholder="Article number"
+                keyboardType="numeric"
+                onChangeText={(text) => setInputField(text)}
+              />
+            </View>
+      <TouchableOpacity
+        style={styles.addToCartButton}
         onPress={() => {
-          addItem(1);
+          addItem(parseInt(inputField));
         }}
-      />
+      >
+        <Text style={styles.addToCartButtonText}>Add to cart</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -180,8 +204,43 @@ const styles = {
     width: 300,
     overflow: "hidden",
     borderRadius: 30,
+    marginTop : 50,
   },
-  articleNumber: {
-  marginLeft:5,
+   inputContainer: {
+      width: "50%",
+      marginBottom: 20,
+    },
+    articleNumber: {
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      paddingLeft: 10,
+      marginTop : 30,
+    },
+  panierButton: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+    backgroundColor: "khaki",
+    padding: 10,
+    borderRadius: 5,
+  },
+  homeButton : {
+      position: "absolute",
+      top: 20,
+      left: 20,
+      backgroundColor: "khaki",
+      padding: 10,
+      borderRadius: 5,
+  },
+  addToCartButton: {
+    backgroundColor: "#ccd5ae",
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  addToCartButtonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 };
