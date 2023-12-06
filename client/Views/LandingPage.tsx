@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableHighlight, Image } from "react-native"
 import * as SQLITE from "expo-sqlite";
 import { initDatabase } from "../db";
 import { Fontisto } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const db = SQLITE.openDatabase("bareCode.db");
 
@@ -41,8 +42,8 @@ export default function LandingPage({ navigation }) {
           onPress={() => navigation.navigate("Scan")}
         >
           <React.Fragment>
-            <Fontisto name="barcode" size={24} color="black" />
-            <Text style={styles.buttonText}>Scan Item</Text>
+          <MaterialCommunityIcons name="qrcode-scan" size={24} color="black" />
+          <Text style={styles.buttonText}>Scan Item</Text>
           </React.Fragment>
         </TouchableHighlight>
       </View>
