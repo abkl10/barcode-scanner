@@ -16,7 +16,6 @@ export default function LandingPage({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>BarCode Scanner Application</Text>
 
-      {/* Image Section */}
       <View style={styles.imageContainer}>
         <Image
           source={require('../assets/bar.png')}
@@ -24,7 +23,6 @@ export default function LandingPage({ navigation }) {
         />
       </View>
 
-      {/* Button Section */}
       <View style={styles.buttonContainer}>
         <TouchableHighlight
           style={styles.customButton}
@@ -68,9 +66,9 @@ const styles = StyleSheet.create({
     margin: 40,
   },
   image: {
-    width: 200, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
-    resizeMode: 'contain', // or 'cover' or 'stretch' as needed
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   },
   buttonContainer: {
     marginBottom : 15,

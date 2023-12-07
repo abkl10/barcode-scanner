@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Alert, Text, Button, SafeAreaView, View } from "react-native";
 import { db } from "../db";
 
-export default function CheckoutScreen({ items, clearCart, total }) {
+export default function CheckoutScreen({ items, Vider, total }) {
   const { initPaymentSheet, presentPaymentSheet } = useStripe();
   const [loading, setLoading] = useState(false);
   const [paymentIntentId, setPaymentIntentId] = useState<string>("");
@@ -82,7 +82,7 @@ export default function CheckoutScreen({ items, clearCart, total }) {
         const currentDate = new Date(); // Get the current date and time
         const formattedDate = currentDate.toISOString();
         Alert.alert("Success", "Your order is confirmed!");
-        clearCart();
+        Vider();
         db.transaction(
           (tx) => {
             tx.executeSql(

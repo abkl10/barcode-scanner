@@ -62,6 +62,28 @@ export default function Scan({ navigation }) {
       });
     });
   };
+const checkScan = () => {
+  const scannedValue = parseInt(text);
+
+  console.log(scannedValue);
+
+  switch (scannedValue) {
+    case 1:
+      addItem(1);
+      break;
+    case 2:
+      addItem(2);
+      break;
+    case 3:
+      addItem(3);
+      break;
+    case 4:
+      addItem(4);
+      break;
+    default:
+      break;
+  }
+};
 
   const addItem = async (itemId) => {
     try {
@@ -160,7 +182,7 @@ origin/main  }
         <TouchableOpacity
           style={styles.addToCartButton}
           onPress={() => {
-            addItem(parseInt(inputField));
+            checkScan();
           }}
         >
           <Text style={styles.addToCartButtonText}>Ajouter au Panier</Text>

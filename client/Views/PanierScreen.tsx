@@ -141,14 +141,13 @@ export default function Panier() {
           () => {
             console.log("Cart table dropped.");
 
-            // Recreate the panier table with the same structure
             tx.executeSql(
               "CREATE TABLE IF NOT EXISTS Panier (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, price REAL, itemId INTEGER, quantity INTEGER)",
               [],
               () => {
                 console.log("Cart table recreated.");
 
-                setCartItems([]); // Clear the local state
+                setCartItems([]);
               },
               (error) => {
                 console.error("Error recreating cart table:", error);
@@ -273,6 +272,7 @@ export default function Panier() {
                     <CheckoutScreen
                       items={checkoutTotalJson}
                       total={total}
+                      Vider={Vider}
                     />
                   </StripeProvider>
                 )}
